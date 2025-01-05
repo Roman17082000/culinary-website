@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #222;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(0);
+  transition: transform 0.35s ease-in-out;
+
+  &.hidden {
+    transform: translateY(-100%);
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .navigation {
+    ul {
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+
+      &:hover {
+        color: #979797;
+      }
+
+      &[aria-current="page"] {
+        font-weight: bold;
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+}
