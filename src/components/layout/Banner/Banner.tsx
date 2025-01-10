@@ -16,7 +16,6 @@ const Banner: React.FC = () => {
   const intervalRef = useRef<number | null>(null);
   const lastPositionRef = useRef({ x: 0, y: 0 });
 
-  // Обработчик изменения размера окна
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -25,7 +24,6 @@ const Banner: React.FC = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Управление интервалом для мобильных устройств
   useEffect(() => {
     if (isMobile) {
       startImageInterval();
@@ -69,7 +67,6 @@ const Banner: React.FC = () => {
 
     bannerRef.current?.appendChild(img);
 
-    // Удаление через 3 секунды
     setTimeout(() => img.remove(), 1500);
   };
 
