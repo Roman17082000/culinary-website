@@ -1,57 +1,34 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Burger } from "../../UI/Burger";
 import "./Header.scss";
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const headerRef = useRef<HTMLDivElement | null>(null); // Ссылка на хедер
-  const [isHidden, setIsHidden] = useState(false);
-  let lastScrollY = useRef(0); // Текущее состояние прокрутки сохраняем через useRef
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (location.pathname !== "/") return; // Проверяем, находимся ли на Home
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        setIsHidden(true); // Скрываем хедер при прокрутке вниз
-      } else {
-        setIsHidden(false); // Показываем при прокрутке вверх
-      }
-
-      lastScrollY.current = currentScrollY; // Обновляем позицию прокрутки
-    };
-
-    const headerElement = headerRef.current;
-
-    if (headerElement) {
-      window.addEventListener("scroll", handleScroll); // Вешаем обработчик прокрутки
-    }
-
-    return () => {
-      if (headerElement) {
-        window.removeEventListener("scroll", handleScroll); // Убираем обработчик при размонтировании
-      }
-    };
-  }, [location.pathname]);
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header
-      ref={headerRef}
-      className={`header ${isHidden && location.pathname === "/" ? "hidden" : ""}`}
-    >
-      <div className="logo">
+    <header className="header">
+      <div className="header__logo">
         <Link to="/" aria-label="Go to Cooking World Home">
-          <h1>Cooking World</h1>
+          Cooking World
         </Link>
       </div>
-      <nav className="navigation" aria-label="Main navigation">
+      <nav className={`header__navigation ${isMenuOpen ? "open" : ""}`}>
         <ul>
           <li>
             <Link
               to="/"
               aria-current={location.pathname === "/" ? "page" : undefined}
+              onClick={closeMenu}
             >
               Home
             </Link>
@@ -62,6 +39,7 @@ export const Header: React.FC = () => {
               aria-current={
                 location.pathname.includes("/category") ? "page" : undefined
               }
+              onClick={closeMenu}
             >
               Categories
             </Link>
@@ -72,12 +50,14 @@ export const Header: React.FC = () => {
               aria-current={
                 location.pathname.includes("/recipe") ? "page" : undefined
               }
+              onClick={closeMenu}
             >
               Recipes
             </Link>
           </li>
         </ul>
       </nav>
+      <Burger onToggle={toggleMenu} isOpen={isMenuOpen} />
     </header>
   );
 };

@@ -1,0 +1,34 @@
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+
+  .burger-line {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  &.open .burger-line:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  &.open .burger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.open .burger-line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}

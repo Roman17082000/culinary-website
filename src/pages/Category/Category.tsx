@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./category.scss";
+import { Recipe } from "../../types"; // Импорт интерфейсов из types
 
-type Recipe = {
-  id: number;
-  name: string;
-  category: number;
-  image: string;
-  description: string;
-};
+import "./category.scss";
 
 const Category: React.FC = () => {
   const { id } = useParams<{ id: string }>();
