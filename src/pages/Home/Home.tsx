@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Banner from "../../components/layout/Banner/Banner.tsx";
+import Banner from "../../components/layout/Banner/Banner";
 import "./home.scss";
-
-type Category = {
-  id: number;
-  name: string;
-  image: string;
-};
-
-type Recipe = {
-  id: number;
-  name: string;
-  category: number;
-  image: string;
-  description: string;
-};
+import { Category, Recipe } from "../../types";
 
 const Home: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);

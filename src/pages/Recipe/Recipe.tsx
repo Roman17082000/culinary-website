@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Recipe as RecipeType } from "../../types";
 import "./recipe.scss";
 
 const Recipe: React.FC = () => {
-  const { id } = useParams();
-  const [recipe, setRecipe] = useState<any>(null);
+  const { id } = useParams<{ id: string }>();
+  const [recipe, setRecipe] = useState<RecipeType | null>(null);
 
   useEffect(() => {
     const fetchRecipe = async () => {
-      const recipeData = await import("../../data/recipes.json");
-      const foundRecipe = recipeData.default.find(
-        (r: any) => r.id === Number(id),
-      );
-      setRecipe(foundRecipe);
+      try {
+        const recipeData = await import("../../data/recipes.json");
+        const foundRecipe = recipeData.default.find(
+          (r: RecipeType) => r.id === Number(id),
+        );
+        setRecipe(foundRecipe || null);
+      } catch (error) {
+        console.error("Failed to load recipe:", error);
+      }
     };
 
-    fetchRecipe();
+    void fetchRecipe();
   }, [id]);
 
   if (!recipe) return <p>Loading...</p>;
