@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Burger } from "../../UI/Burger";
+import { Burger } from "../../UI/Burger/Burger.tsx";
 import "./Header.scss";
 
 export const Header: React.FC = () => {
