@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Banner.scss";
 
-import image1 from "../../../assets/images/24022021x2704a38a.jpg";
-import image2 from "../../../assets/images/1617102175_2.jpg";
-import image3 from "../../../assets/images/1629647029_7-kartinkin-com-p-vkusnaya-yeda-doma-yeda-krasivo-foto-7.jpg";
-import image4 from "../../../assets/images/C1qxlJfXgAYSCHl.jpg";
-import image5 from "../../../assets/images/depositphotos_14773785-stock-photo-hot-chinese-food-with-steam.jpg";
-import image6 from "../../../assets/images/eda-myasnye-blyuda-vkusno-zelen-zapechen-1185675.jpg";
+import image1 from "../../../assets/images/BannerImages/24022021x2704a38a.jpg";
+import image2 from "../../../assets/images/BannerImages/1617102175_2.jpg";
+import image3 from "../../../assets/images/BannerImages/1629647029_7-kartinkin-com-p-vkusnaya-yeda-doma-yeda-krasivo-foto-7.jpg";
+import image4 from "../../../assets/images/BannerImages/C1qxlJfXgAYSCHl.jpg";
+import image5 from "../../../assets/images/BannerImages/depositphotos_14773785-stock-photo-hot-chinese-food-with-steam.jpg";
+import image6 from "../../../assets/images/BannerImages/eda-myasnye-blyuda-vkusno-zelen-zapechen-1185675.jpg";
 
 const images = [image1, image2, image3, image4, image5, image6];
 
@@ -38,7 +38,7 @@ const Banner: React.FC = () => {
     stopImageInterval();
     intervalRef.current = window.setInterval(() => {
       addRandomImages();
-    }, 2000);
+    }, 1300);
   };
 
   const stopImageInterval = () => {
@@ -67,7 +67,8 @@ const Banner: React.FC = () => {
 
     bannerRef.current?.appendChild(img);
 
-    setTimeout(() => img.remove(), 1500);
+    const removeDelay = isMobile ? 1500 : 300;
+    setTimeout(() => img.remove(), removeDelay);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {

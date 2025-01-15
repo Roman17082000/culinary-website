@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Burger } from "../../UI/Burger";
+import { Burger } from "../../UI/Burger/Burger.tsx";
 import "./Header.scss";
 
 export const Header: React.FC = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Видимость хедера
+  const [lastScrollY, setLastScrollY] = useState(0); // Последняя позиция прокрутки
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -15,8 +17,29 @@ export const Header: React.FC = () => {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (location.pathname === "/" && !isMenuOpen) {
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, location.pathname, isMenuOpen]);
+
   return (
-    <header className="header">
+    <header
+      className={`header ${!isVisible && location.pathname === "/" ? "hidden" : ""}`}
+    >
       <div className="header__logo">
         <Link to="/" aria-label="Go to Cooking World Home">
           Cooking World
