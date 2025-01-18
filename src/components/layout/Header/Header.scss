@@ -3,13 +3,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #222; // Чёрный фон хедера
+  background-color: #222;
   z-index: 100;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+  &.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 
   &__logo {
     font-size: 18px;
