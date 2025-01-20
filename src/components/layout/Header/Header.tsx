@@ -58,20 +58,9 @@ export const Header: React.FC = () => {
           </li>
           <li>
             <Link
-              to="/category/1"
+              to="/recipes"
               aria-current={
                 location.pathname.includes("/category") ? "page" : undefined
-              }
-              onClick={closeMenu}
-            >
-              Categories
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/recipe/1"
-              aria-current={
-                location.pathname.includes("/recipe") ? "page" : undefined
               }
               onClick={closeMenu}
             >

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Modal from "../../../UI/Modal/Modal.tsx";
-import "./usefulInfo.scss";
+import Modal from "../../../../components/UI/Modal/Modal.tsx";
+import "./UsefulInfo.scss";
 
 const UsefulInfo: React.FC = () => {
   const [activeTab, setActiveTab] = useState("tips");

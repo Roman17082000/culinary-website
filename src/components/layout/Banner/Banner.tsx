@@ -94,15 +94,12 @@ const Banner: React.FC = () => {
     <section className="banner" ref={bannerRef} onMouseMove={handleMouseMove}>
       <div className="banner__content">
         <h1 className="banner__title">
-          Еда и Рецепты <br /> Секреты здоровья и спорта
+          Еда и Рецепты <br /> Секреты здоровья и спорта!
         </h1>
         <p className="banner__quote">
           "Тот, кто имеет причину жить, может вынести почти любое «как»." —
           Фридрих Ницше
         </p>
-      </div>
-      <div className="banner__footer">
-        <p className="banner__author">Блог Романа Кособуцкого</p>
       </div>
     </section>
   );

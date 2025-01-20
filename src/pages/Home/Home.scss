@@ -1,0 +1,55 @@
+.home {
+  .home__content {
+    z-index: 1;
+    position: relative;
+    margin-top: 93vh;
+    background-color: white;
+    background-size: cover;
+    width: 100%;
+    padding: 100px 0;
+  }
+  .useful-info {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f9f9f9;
+
+    ul {
+      list-style: disc;
+      margin: 20px auto;
+      padding-left: 40px;
+    }
+  }
+
+  .blog-section {
+    padding: 50px 20px;
+
+    .blog-list {
+      display: flex;
+      gap: 20px;
+
+      .blog-item {
+        flex: 1;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+
+        h3 {
+          margin: 10px 0;
+          font-size: 1.5rem;
+        }
+
+        p {
+          color: #666;
+        }
+      }
+    }
+  }
+}
