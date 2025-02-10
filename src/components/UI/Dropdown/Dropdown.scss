@@ -1,0 +1,16 @@
+.dropdown {
+  position: relative;
+  display: flex;
+  flex: 0 0 235px;
+
+  .dropdown-trigger {
+    cursor: pointer;
+  }
+
+  &:hover .dropdown-content,
+  &:focus-within .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}

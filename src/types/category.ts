@@ -1,6 +1,5 @@
-export interface Category {
+export type Subcategory = {
   id: number;
   name: string;
-  description?: string;
   image: string;
-}
+};
