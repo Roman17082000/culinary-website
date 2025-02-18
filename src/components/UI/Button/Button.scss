@@ -1,0 +1,83 @@
+.custom-button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  text-align: center;
+
+  // Варианты цветов
+  &.primary {
+    background-color: #ff466a;
+    color: white;
+
+    &:hover {
+      background-color: #e03b5b;
+    }
+  }
+
+  &.secondary {
+    background-color: #555;
+    color: white;
+
+    &:hover {
+      background-color: #444;
+    }
+  }
+
+  &.danger {
+    background-color: #d9534f;
+    color: white;
+
+    &:hover {
+      background-color: #c9302c;
+    }
+  }
+
+  &.success {
+    background-color: #5cb85c;
+    color: white;
+
+    &:hover {
+      background-color: #4cae4c;
+    }
+  }
+
+  // Размеры кнопки
+  &.small {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+
+  &.medium {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  &.large {
+    padding: 14px 28px;
+    font-size: 1.25rem;
+  }
+
+  // Формы кнопки
+  &.rounded {
+    border-radius: 8px;
+  }
+
+  &.square {
+    border-radius: 0;
+  }
+
+  &.pill {
+    border-radius: 50px;
+  }
+
+  // Отключенная кнопка
+  &.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+}

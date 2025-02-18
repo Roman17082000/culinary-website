@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../../components/layout/Banner/Banner";
 import Categories from "./Sections/Categories/Categories.tsx";
-import UsefulInfo from "./Sections/UsefulInfo/UsefulInfo.tsx";
+import FlavorLab from "./Sections/FlavorLab/FlavorLab.tsx";
 import BlogSection from "./Sections/BlogSection/BlogSection.tsx";
 
 import "./Home.scss";
@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       <Banner />
       <div className="home__content">
         <Categories />
-        <UsefulInfo />
+        <FlavorLab />
         <BlogSection />
       </div>
     </div>
