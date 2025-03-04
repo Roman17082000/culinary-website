@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(circle, #1e1817, #d8a03e);
+  background: linear-gradient(0deg, #222, #a6773d);
 
   .canvas-bg {
     position: absolute;
@@ -15,21 +15,41 @@
     width: 50%;
     height: 100%;
   }
+  .canvas-bg:hover {
+    filter: blur(1.5px);
+  }
 
   .content {
     position: absolute;
     z-index: 10;
     text-align: center;
     color: #fff;
-    padding: 20px;
-    max-width: 400px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
-    transition: transform 0.3s ease-in-out;
+    padding: 30px;
+    max-width: 450px;
+    background: rgba(20, 20, 20, 0.8);
+    border-radius: 15px;
+    transition: transform 0.5s ease-in-out;
   }
 
   .content:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255, 170, 50, 1);
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .content {
+      padding: 20px;
+      max-width: 80%;
+      font-size: 14px;
+    }
   }
 }

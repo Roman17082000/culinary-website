@@ -35,7 +35,7 @@ const RecipePage: React.FC = () => {
 
   return (
     <div className="category-page">
-      <h1>Recipes in Category {id}vc</h1>
+      <h2>Recipes in Category {id}vc</h2>
       <div className="recipe-list">
         {categoryRecipes.map((recipe) => (
           <div className="recipe-item" key={recipe.id}>

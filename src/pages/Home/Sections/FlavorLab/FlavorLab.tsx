@@ -1,62 +1,114 @@
-import { useRef, useMemo } from "react";
+import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
-import Button from "../../../../components/UI/Button/Button.tsx";
-import * as THREE from "three"; // Импортируем THREE
+import * as THREE from "three";
 import "./FlavorLab.scss";
+import Button from "../../../../components/UI/Button/Button.tsx";
+import { Vector3 } from "three";
 
-const SpiceParticles = () => {
-  const particlesRef = useRef<THREE.Points>(null); // Указываем тип
-  const mouse = useRef({ x: 0, y: 0 });
+import Apple from "../../../../assets/images/pngwing.com.png";
+import Strawberry from "../../../../assets/images/pngwing.com (1).png";
+import Cucumber from "../../../../assets/images/pngwing.com (2).png";
+import Tsukini from "../../../../assets/images/pngwing.com (3).png";
+import Cheeseburger from "../../../../assets/images/pngwing.com (4).png";
+import Pizza from "../../../../assets/images/pngwing.com (5).png";
+import Pepper from "../../../../assets/images/pngwing.com (6).png";
+import Bread from "../../../../assets/images/pngwing.com (7).png";
+import StyleFromSalmon from "../../../../assets/images/pngwing.com (8).png";
+import BeefSteak from "../../../../assets/images/pngwing.com (9).png";
+import FrenchFries from "../../../../assets/images/pngwing.com (10).png";
 
-  const particles = useMemo(() => {
-    const count = 3000;
-    const positions = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 50;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 50;
-    }
-    return positions;
-  }, []);
+const foodImages = [
+  Apple,
+  FrenchFries,
+  Tsukini,
+  Cheeseburger,
+  StyleFromSalmon,
+  Strawberry,
+  Bread,
+  Cucumber,
+  Pizza,
+  Pepper,
+  BeefSteak,
+];
 
-  useFrame(({ clock }) => {
-    if (particlesRef.current) {
-      const t = clock.getElapsedTime();
-      particlesRef.current.rotation.y = t * 0.2;
-      particlesRef.current.rotation.x = Math.sin(t * 0.5) * 0.2;
+const FoodSprite: React.FC<{ position: [number, number, number] }> = ({
+  position,
+}) => {
+  const spriteRef = useRef<THREE.Sprite>(null);
+  const velocity = useMemo(
+    () => [
+      (Math.random() - 0.5) * 0.05,
+      (Math.random() - 0.5) * 0.05,
+      (Math.random() - 0.5) * 0.05,
+    ],
+    [],
+  );
+
+  useFrame(() => {
+    if (spriteRef.current) {
+      spriteRef.current.position.x += velocity[0];
+      spriteRef.current.position.y += velocity[1];
+      spriteRef.current.position.z += velocity[2];
+
+      const bounds = 10;
+      const position = spriteRef.current.position as Vector3; // Cast to Vector3
+
+      if (position.x > bounds || position.x < -bounds) {
+        velocity[0] *= -1;
+      }
+      if (position.y > bounds || position.y < -bounds) {
+        velocity[1] *= -1;
+      }
+      if (position.z > bounds || position.z < -bounds) {
+        velocity[2] *= -1;
+      }
     }
   });
 
   return (
-    <Points
-      ref={particlesRef}
-      positions={particles}
-      onPointerMove={(e) => {
-        mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-        mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-      }}
-    >
-      <PointMaterial
-        size={0.6}
-        transparent
-        opacity={0.8}
-        color={["#ff4500", "#8b4513", "#228b22"]}
-        depthWrite={true}
+    <sprite ref={spriteRef} position={position}>
+      <spriteMaterial
+        attach="material"
+        map={new THREE.TextureLoader().load(
+          foodImages[Math.floor(Math.random() * foodImages.length)],
+        )}
+        transparent={true}
       />
-    </Points>
+    </sprite>
   );
 };
 
-const FlavorLab = () => {
+const FoodParticles: React.FC = () => {
+  const particles = useMemo(
+    () =>
+      new Array(50)
+        .fill(null)
+        .map(() => [
+          (Math.random() - 0.5) * 20,
+          (Math.random() - 0.5) * 20,
+          (Math.random() - 0.5) * 20,
+        ]),
+    [],
+  );
+
+  return (
+    <>
+      {particles.map((position, i) => (
+        <FoodSprite key={i} position={position as [number, number, number]} />
+      ))}
+    </>
+  );
+};
+
+const FlavorLab: React.FC = () => {
   const navigate = useNavigate();
+
   return (
     <section className="flavor-lab">
       <Canvas className="canvas-bg">
-        <ambientLight intensity={0.7} />
-        <pointLight position={[5, 5, 5]} intensity={1} />
-        <SpiceParticles />
+        <ambientLight intensity={0.5} />
+        <FoodParticles />
       </Canvas>
       <div className="content">
         <h2>Создай свой кулинарный шедевр!</h2>
