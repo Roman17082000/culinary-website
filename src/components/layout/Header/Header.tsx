@@ -6,8 +6,8 @@ import "./Header.scss";
 export const Header: React.FC = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true); // Видимость хедера
-  const [lastScrollY, setLastScrollY] = useState(0); // Последняя позиция прокрутки
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);

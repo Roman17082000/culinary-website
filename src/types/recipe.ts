@@ -3,5 +3,5 @@ export interface Recipe {
   name: string;
   image: string;
   description: string;
-  category: number; // связь с категорией
+  category: number;
 }

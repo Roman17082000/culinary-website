@@ -49,7 +49,7 @@ const Banner: React.FC = () => {
   };
 
   const addRandomImages = () => {
-    const imgCount = 1; // Количество картинок за раз
+    const imgCount = 1;
     for (let i = 0; i < imgCount; i++) {
       addImage(
         Math.random() * window.innerWidth,
@@ -72,21 +72,20 @@ const Banner: React.FC = () => {
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (isMobile || !bannerRef.current) return; // Только для десктопа
+    if (isMobile || !bannerRef.current) return;
 
     const { left, top } = bannerRef.current.getBoundingClientRect();
     const x = e.clientX - left;
     const y = e.clientY - top;
 
-    const lastPosition = lastPositionRef.current;
     const distance = Math.sqrt(
-      (x - lastPosition.x) ** 2 + (y - lastPosition.y) ** 2,
+      (x - lastPositionRef.current.x) ** 2 +
+        (y - lastPositionRef.current.y) ** 2,
     );
 
-    if (distance < 50) return; // Минимальное расстояние для нового изображения
+    if (distance < 50) return;
 
     lastPositionRef.current = { x, y };
-
     addImage(x, y);
   };
 

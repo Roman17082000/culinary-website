@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Dropdown.scss";
 
 interface DropdownProps {
-  trigger: React.ReactNode; // Элемент, на который наводят мышь (или кликают)
-  content: React.ReactNode; // Контент для отображения внутри дропдауна
-  position?: "top" | "bottom" | "left" | "right"; // Позиция дропдауна
-  hover?: boolean; // Показывать при наведении или при клике
+  trigger: React.ReactNode;
+  content: React.ReactNode;
+  position?: "top" | "bottom" | "left" | "right";
+  hover?: boolean;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({

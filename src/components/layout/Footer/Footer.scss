@@ -9,6 +9,9 @@ $footer-rights-color: #999;
   color: $footer-text-color;
   padding: 20px 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
 
   &__container {
@@ -26,9 +29,9 @@ $footer-rights-color: #999;
   }
 
   &__section {
-    flex: 1;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 20px 0;
     min-width: 200px;
 
     h4 {
@@ -38,36 +41,24 @@ $footer-rights-color: #999;
       color: $footer-heading-color;
     }
 
-    ul {
+    ul,
+    a {
       list-style: none;
       padding: 0;
-
-      li {
-        margin-bottom: 8px;
-
-        a {
-          text-decoration: none;
-          color: $footer-text-color;
-          font-size: 16px;
-
-          &:hover {
-            color: $footer-link-hover-color;
-          }
-        }
-      }
-    }
-    a {
       color: $footer-text-color;
       font-size: 16px;
 
-      &:hover {
-        color: $footer-link-hover-color;
+      a {
+        text-decoration: none;
+
+        &:hover {
+          color: $footer-link-hover-color;
+        }
       }
     }
 
     p {
       font-size: 16px;
-      color: $footer-text-color;
     }
   }
 

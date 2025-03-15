@@ -5,9 +5,9 @@ import "./Button.scss";
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "danger" | "success"; // Цвета кнопки
-  size?: "small" | "medium" | "large"; // Размеры кнопки
-  shape?: "rounded" | "square" | "pill"; // Форма кнопки
+  variant?: "primary" | "secondary" | "danger" | "success";
+  size?: "small" | "medium" | "large";
+  shape?: "rounded" | "square" | "pill";
   disabled?: boolean;
 }
 

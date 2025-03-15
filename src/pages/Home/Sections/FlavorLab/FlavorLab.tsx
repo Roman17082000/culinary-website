@@ -52,7 +52,7 @@ const FoodSprite: React.FC<{ position: [number, number, number] }> = ({
       spriteRef.current.position.z += velocity[2];
 
       const bounds = 10;
-      const position = spriteRef.current.position as Vector3; // Cast to Vector3
+      const position = spriteRef.current.position as Vector3;
 
       if (position.x > bounds || position.x < -bounds) {
         velocity[0] *= -1;
