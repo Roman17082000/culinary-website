@@ -58,7 +58,12 @@ web_modules/
 # Optional stylelint cache
 .stylelintcache
 
+# Build output directories
 dist
 dist-ssr
+
+# Local files
 *.local
 
+# JetBrains IDE settings
+.idea/
